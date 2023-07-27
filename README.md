@@ -1,2 +1,2 @@
 # pe-backup-go
-CLI tool for backing up Json from http response.
+GO version of the CLI tool for backing up Json from http response.
