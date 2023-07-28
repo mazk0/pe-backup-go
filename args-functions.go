@@ -15,8 +15,7 @@ func printInstructions() {
 
 func formatDestination(destination string) (formattedDestination string) {
 	index := strings.LastIndex(destination, ".")
-	now := time.Now()
-	formattedDestination = fmt.Sprintf("%s_%s%s", destination[:index], now.Format("2006-01-02"), destination[index:])
+	formattedDestination = fmt.Sprintf("%s_%s%s", destination[:index], time.Now().Format("2006-01-02"), destination[index:])
 	return
 }
 
@@ -24,7 +23,6 @@ func mapArguments(args []string) (couldMap bool, source string, destination stri
 	if len(os.Args) != 3 {
 		fmt.Println("Incorrect number of arguments passed")
 		printInstructions()
-		couldMap = false
 		return
 	}
 
@@ -34,7 +32,6 @@ func mapArguments(args []string) (couldMap bool, source string, destination stri
 	if _, err := url.ParseRequestURI(source); err != nil {
 		fmt.Printf("Incorrectly formatted source Has to be a valid url. Error %s\n", err.Error())
 		printInstructions()
-		couldMap = false
 		return
 	}
 
